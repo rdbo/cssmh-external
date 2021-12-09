@@ -25,6 +25,7 @@ bool Overlay::RenderLoop()
 		glfwSetWindowAttrib(this->overlay_window, GLFW_MOUSE_PASSTHROUGH, GLFW_FALSE);
 	
 	ImGui::Begin("CSSMH");
+	ImGui::Checkbox("Bunnyhop", &CSSMH::EnableBunnyhop);
 	ImGui::End();
 
 	return true;
