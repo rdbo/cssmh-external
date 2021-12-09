@@ -29,5 +29,10 @@ void CSSMH::Init() {
 	std::cout << "[*] Threads initialized" << std::endl;
 	overlay_thread.join();
 	input_thread.join();
+	CSSMH::Shutdown();
+}
+
+void CSSMH::Shutdown()
+{
 	delete CSSMH::GameOverlay;
 }

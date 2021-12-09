@@ -16,6 +16,7 @@ namespace CSSMH {
 	extern Overlay *GameOverlay;
 
 	void Init();
+	void Shutdown();
 }
 
 #endif
