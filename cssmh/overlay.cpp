@@ -58,6 +58,8 @@ void Overlay::MainLoop()
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
 
+		this->imgui_bgdraw = ImGui::GetBackgroundDrawList();
+
 		if (!this->RenderLoop())
 			break;
 		

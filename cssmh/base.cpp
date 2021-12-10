@@ -5,16 +5,22 @@ bool CSSMH::IsRunning = true;
 bool CSSMH::ShowMenu = true;
 
 bool CSSMH::EnableBunnyhop = false;
+bool CSSMH::EnableEspSnaplines = true;
 
 uintptr_t CSSMH::ClientBase = 0;
+uintptr_t CSSMH::EngineBase = 0;
 uintptr_t CSSMH::LocalPlayerPtr = 0;
+uintptr_t CSSMH::LocalPlayerAddr = 0;
 uintptr_t CSSMH::InJumpBtn = 0;
 
 KeyInfo CSSMH::KeyMenu = KeyInfo(XK_Insert);
 KeyInfo CSSMH::KeyBhop = KeyInfo(XK_space);
-Player CSSMH::LocalPlayer = Player();
 
 Overlay *CSSMH::GameOverlay;
+
+Player CSSMH::LocalPlayer = Player();
+std::array<Player, 64> CSSMH::EntityList;
+ViewMatrix_t CSSMH::ViewMatrix;
 
 void OverlayThread()
 {
@@ -53,6 +59,11 @@ void CSSMH::Init() {
 	CSSMH::InJumpBtn = CSSMH::ClientBase + Offsets::InJumpBtn;
 
 	std::cout << "[*] Client Base: " << (void *)CSSMH::ClientBase << std::endl;
+
+	while (!CSSMH::EngineBase)
+		CSSMH::EngineBase = Memory::GetModuleBase(CSSMH::GameOverlay->target_pid, "/bin/engine.so");
+	
+	std::cout << "[*] Engine Base: " << (void *)CSSMH::EngineBase << std::endl;
 
 	std::cout << "[#] Modules initialized" << std::endl;
 	std::cout << std::endl;

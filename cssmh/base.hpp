@@ -9,17 +9,18 @@
 #include "offsets.hpp"
 #include "hack.hpp"
 
-#define UNION_OFFSET(type, varname, offset) struct { char __tmp[offset]; type varname; }
-
 namespace CSSMH {
 	extern bool IsRunning;
 	extern bool IsActive;
 	extern bool ShowMenu;
 
 	extern bool EnableBunnyhop;
+	extern bool EnableEspSnaplines;
 
 	extern uintptr_t ClientBase;
+	extern uintptr_t EngineBase;
 	extern uintptr_t LocalPlayerPtr;
+	extern uintptr_t LocalPlayerAddr;
 	extern uintptr_t InJumpBtn;
 
 	extern KeyInfo KeyMenu;
@@ -28,6 +29,8 @@ namespace CSSMH {
 	extern Overlay *GameOverlay;
 
 	extern Player LocalPlayer;
+	extern std::array<Player, 64> EntityList;
+	extern ViewMatrix_t ViewMatrix;
 
 	void Init();
 	void Shutdown();

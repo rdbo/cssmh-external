@@ -20,13 +20,26 @@ bool Overlay::RenderLoop()
 	if (!CSSMH::ShowMenu) {
 		if (glfwGetWindowAttrib(this->overlay_window, GLFW_MOUSE_PASSTHROUGH) == GLFW_FALSE)
 			glfwSetWindowAttrib(this->overlay_window, GLFW_MOUSE_PASSTHROUGH, GLFW_TRUE);
-		return true;
 	} else if (glfwGetWindowAttrib(this->overlay_window, GLFW_MOUSE_PASSTHROUGH) == GLFW_TRUE)
 		glfwSetWindowAttrib(this->overlay_window, GLFW_MOUSE_PASSTHROUGH, GLFW_FALSE);
+
+	if (CSSMH::LocalPlayerPtr) {
+		for (size_t i = 0; i < CSSMH::EntityList.size(); ++i) {
+			if (CSSMH::EntityList[i].dormant)
+				continue;
+			
+			if (CSSMH::EntityList[i].w2s_result) {
+				Hack::ESP_Snaplines(CSSMH::EntityList[i]);
+			}
+		}
+	}
 	
-	ImGui::Begin("CSSMH");
-	ImGui::Checkbox("Bunnyhop", &CSSMH::EnableBunnyhop);
-	ImGui::End();
+	if (CSSMH::ShowMenu) {
+		ImGui::Begin("CSSMH");
+		ImGui::Checkbox("Bunnyhop", &CSSMH::EnableBunnyhop);
+		ImGui::Checkbox("ESP Snaplines", &CSSMH::EnableEspSnaplines);
+		ImGui::End();
+	}
 
 	return true;
 }

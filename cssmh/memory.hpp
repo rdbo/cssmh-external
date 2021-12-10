@@ -10,7 +10,7 @@ namespace Memory {
 	template <typename type_t>
 	inline type_t ReadMemory(pid_t pid, uintptr_t src)
 	{
-		type_t val = (type_t)0;
+		type_t val;
 		Memory::ReadMemory(pid, src, (void *)&val, sizeof(val));
 		return val;
 	}

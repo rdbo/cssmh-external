@@ -13,6 +13,7 @@ public:
 	Window overlay_window_x;
 	Window root_window;
 	ImGuiContext *imgui_ctx;
+	ImDrawList *imgui_bgdraw;
 	int x;
 	int y;
 	unsigned int width;
