@@ -15,8 +15,7 @@ void Player::Update()
 	this->health = Memory::ReadMemory<int32_t>(CSSMH::GameOverlay->target_pid, this->address + Offsets::PlayerHealth);
 	this->team = Memory::ReadMemory<int32_t>(CSSMH::GameOverlay->target_pid, this->address + Offsets::PlayerTeam);
 	this->flags = Memory::ReadMemory<int32_t>(CSSMH::GameOverlay->target_pid, this->address + Offsets::PlayerFlags);
-	this->position = Memory::ReadMemory<flVec3>(CSSMH::GameOverlay->target_pid, this->address + Offsets::PlayerDormant);
-	this->w2s_result = WorldToScreen(this->position, this->screen_pos, CSSMH::ViewMatrix, CSSMH::GameOverlay->width, CSSMH::GameOverlay->height);
+	this->position = Memory::ReadMemory<flVec3>(CSSMH::GameOverlay->target_pid, this->address + Offsets::PlayerPosition);
 }
 
 bool WorldToScreen(flVec3 pos, iVec2& pos2d, ViewMatrix_t viewmatrix, unsigned int window_width, unsigned int window_height)

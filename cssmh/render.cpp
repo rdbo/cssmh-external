@@ -28,6 +28,7 @@ bool Overlay::RenderLoop()
 			if (CSSMH::EntityList[i].dormant)
 				continue;
 			
+			CSSMH::EntityList[i].w2s_result = WorldToScreen(CSSMH::EntityList[i].position, CSSMH::EntityList[i].screen_pos, CSSMH::ViewMatrix, CSSMH::GameOverlay->width, CSSMH::GameOverlay->height);
 			if (CSSMH::EntityList[i].w2s_result) {
 				Hack::ESP_Snaplines(CSSMH::EntityList[i]);
 			}
