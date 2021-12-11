@@ -25,7 +25,7 @@ bool Overlay::RenderLoop()
 
 	if (CSSMH::LocalPlayerPtr) {
 		for (size_t i = 0; i < CSSMH::EntityList.size(); ++i) {
-			if (CSSMH::EntityList[i].dormant)
+			if (CSSMH::EntityList[i].dormant && CSSMH::EntityList[i].health >= 0 && CSSMH::EntityList[i].team > 1)
 				continue;
 			
 			CSSMH::EntityList[i].w2s_result = WorldToScreen(CSSMH::EntityList[i].position, CSSMH::EntityList[i].screen_pos, CSSMH::ViewMatrix, CSSMH::GameOverlay->width, CSSMH::GameOverlay->height);

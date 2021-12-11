@@ -5,13 +5,13 @@ bool CSSMH::IsRunning = true;
 bool CSSMH::ShowMenu = true;
 
 bool CSSMH::EnableBunnyhop = false;
-bool CSSMH::EnableEspSnaplines = true;
+bool CSSMH::EnableEspSnaplines = false;
 
-uintptr_t CSSMH::ClientBase = 0;
-uintptr_t CSSMH::EngineBase = 0;
-uintptr_t CSSMH::LocalPlayerPtr = 0;
-uintptr_t CSSMH::LocalPlayerAddr = 0;
-uintptr_t CSSMH::InJumpBtn = 0;
+pointer_t CSSMH::ClientBase = 0;
+pointer_t CSSMH::EngineBase = 0;
+pointer_t CSSMH::LocalPlayerPtr = 0;
+pointer_t CSSMH::LocalPlayerAddr = 0;
+pointer_t CSSMH::InJumpBtn = 0;
 
 KeyInfo CSSMH::KeyMenu = KeyInfo(XK_Insert);
 KeyInfo CSSMH::KeyBhop = KeyInfo(XK_space);

@@ -80,6 +80,7 @@ void Overlay::UpdateWindow()
 {
 	XWindowAttributes wattr;
 	Window window_tmp;
+	static Atom fullscreen_prop = XInternAtom(this->display, "_NET_WM_STATE_FULLSCREEN", False);
 
 	XGetWindowAttributes(this->display, this->target_window, &wattr);
 	XTranslateCoordinates(this->display, this->target_window, this->root_window, 0, 0, &x, &y, &window_tmp);
@@ -89,6 +90,24 @@ void Overlay::UpdateWindow()
 
 	glfwSetWindowPos(this->overlay_window, this->x, this->y);
 	glfwSetWindowSize(this->overlay_window, this->width, this->height);
+
+	/*
+	Atom atom_tmp;
+	int i_tmp;
+	unsigned long ul_tmp;
+	unsigned char *fullscreen_data;
+	if (XGetWindowProperty(
+			this->display, this->target_window, fullscreen_prop,
+			0, BUFSIZ, False, AnyPropertyType, &atom_tmp, &i_tmp, &ul_tmp,
+			&ul_tmp, &fullscreen_data
+		) >= Success && fullscreen_data) {
+		if (*(int *)fullscreen_data == True)
+			glfwSetWindowMonitor(this->overlay_window, glfwGetPrimaryMonitor(), 0, 0, this->width, this->height, GLFW_DONT_CARE);
+		XFree(fullscreen_data);
+	} else if (glfwGetWindowMonitor(this->overlay_window)) {
+		glfwSetWindowMonitor(this->overlay_window, NULL, 0, 0, this->width, this->height, GLFW_DONT_CARE);
+	}
+	*/
 }
 
 bool Overlay::EnumWindowsCallback(Window window)

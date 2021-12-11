@@ -1,8 +1,8 @@
 #include "memory.hpp"
 
-uintptr_t Memory::GetModuleBase(pid_t pid, std::string module_name)
+pointer_t Memory::GetModuleBase(pid_t pid, std::string module_name)
 {
-	uintptr_t base_address = 0;
+	pointer_t base_address = 0;
 	std::stringstream regex_str;
 	regex_str << "([a-z0-9]+)-[a-z0-9]+.*/.*" << module_name;
 	std::regex regex = std::regex(regex_str.str());
@@ -16,7 +16,7 @@ uintptr_t Memory::GetModuleBase(pid_t pid, std::string module_name)
 
 	while (std::getline(fs, line)) {
 		if (std::regex_search(line, matches, regex)) {
-			base_address = (uintptr_t)strtoul(matches[1].str().c_str(), NULL, 16);
+			base_address = (pointer_t)strtoul(matches[1].str().c_str(), NULL, 16);
 			break;
 		}
 	}
@@ -24,7 +24,7 @@ uintptr_t Memory::GetModuleBase(pid_t pid, std::string module_name)
 	return base_address;
 }
 
-bool Memory::ReadMemory(pid_t pid, uintptr_t src, void *dst, size_t size)
+bool Memory::ReadMemory(pid_t pid, pointer_t src, void *dst, size_t size)
 {
 	ssize_t rdsize;
 	struct iovec iosrc;
@@ -37,7 +37,7 @@ bool Memory::ReadMemory(pid_t pid, uintptr_t src, void *dst, size_t size)
 	return rdsize != -1;
 }
 
-bool Memory::WriteMemory(pid_t pid, uintptr_t dst, void *src, size_t size)
+bool Memory::WriteMemory(pid_t pid, pointer_t dst, void *src, size_t size)
 {
 	ssize_t wrsize;
 	struct iovec iosrc;

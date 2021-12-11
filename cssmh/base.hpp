@@ -17,11 +17,11 @@ namespace CSSMH {
 	extern bool EnableBunnyhop;
 	extern bool EnableEspSnaplines;
 
-	extern uintptr_t ClientBase;
-	extern uintptr_t EngineBase;
-	extern uintptr_t LocalPlayerPtr;
-	extern uintptr_t LocalPlayerAddr;
-	extern uintptr_t InJumpBtn;
+	extern pointer_t ClientBase;
+	extern pointer_t EngineBase;
+	extern pointer_t LocalPlayerPtr;
+	extern pointer_t LocalPlayerAddr;
+	extern pointer_t InJumpBtn;
 
 	extern KeyInfo KeyMenu;
 	extern KeyInfo KeyBhop;

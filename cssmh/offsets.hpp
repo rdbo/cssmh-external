@@ -5,20 +5,20 @@
 
 namespace Offsets {
 	// client.so
-	const uintptr_t LocalPlayerPtr = 0xBD0750;
-	const uintptr_t EntityList = 0xBA5FB4;
-	const uintptr_t EntityDist = 0x10;
-	const uintptr_t InJumpBtn = 0xBEE4E8;
+	const pointer_t LocalPlayerPtr = 0xBD0750;
+	const pointer_t EntityList = 0xBA5FB4;
+	const pointer_t EntityDist = 0x10;
+	const pointer_t InJumpBtn = 0xBEE4E8;
 
 	// engine.so
-	const uintptr_t ViewMatrix = 0xC9B160;
+	const pointer_t ViewMatrix = 0xC9B160;
 
 	// Player
-	const uintptr_t PlayerHealth = 0x84;
-	const uintptr_t PlayerTeam = 0x8C;
-	const uintptr_t PlayerFlags = 0x340;
-	const uintptr_t PlayerDormant = 0x16E;
-	const uintptr_t PlayerPosition = 0x250;
+	const pointer_t PlayerHealth = 0x84;
+	const pointer_t PlayerTeam = 0x8C;
+	const pointer_t PlayerFlags = 0x340;
+	const pointer_t PlayerDormant = 0x16E;
+	const pointer_t PlayerPosition = 0x250;
 }
 
 #endif

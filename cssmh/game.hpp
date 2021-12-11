@@ -27,7 +27,7 @@ typedef float ViewMatrix_t[4][4];
 
 class Player {
 public:
-	uintptr_t address;
+	pointer_t address;
 	int32_t health;
 	int32_t team;
 	int32_t flags;
@@ -37,7 +37,7 @@ public:
 	bool w2s_result;
 public:
 	inline Player() {  }
-	Player(uintptr_t address);
+	Player(pointer_t address);
 	void Update();
 };
 

@@ -1,7 +1,7 @@
 #include "game.hpp"
 #include "base.hpp"
 
-Player::Player(uintptr_t address)
+Player::Player(pointer_t address)
 {
 	this->address = address;
 }

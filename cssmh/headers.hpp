@@ -23,6 +23,6 @@
 #include <imgui.h>
 #include <imgui_impl_glfw.h>
 #include <imgui_impl_opengl2.h>
-#define uintptr_t uint32_t
+typedef uint32_t pointer_t;
 
 #endif
